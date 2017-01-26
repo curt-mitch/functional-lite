@@ -38,3 +38,20 @@ function foo(x) {
     return x;
   };
 }
+
+/*
+  5. Write an `addn(..)` that can take an array of 2 or more values, and
+  using only `add2(..)`, adds them together. Try it with a loop. Try it
+  without a loop (recursion). Try it with built-in array functional helpers (
+  may/reduce).
+ */
+
+function addn(arr) {
+  var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    sum = add2(foo(arr[i]), foo(sum));
+  }
+  return sum;
+}
+
+addn(10, 42, 56, 73);
