@@ -47,11 +47,15 @@ function foo(x) {
  */
 
 function addn(arr) {
-  var sum = 0;
-  for (var i = 0; i < arr.length; i++) {
-    sum = add2(foo(arr[i]), foo(sum));
+  if (arr.length <= 2) {
+    return add2(foo(arr[0]), foo(arr[1]));
   }
-  return sum;
+  return addn(
+    [function() {
+      return add2(arr[0], arr[1]);
+    }]
+    .concat(arr.slice(2))
+  );
 }
 
 addn(10, 42, 56, 73);
