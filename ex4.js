@@ -3,14 +3,6 @@
     number value when called
  */
 
-function foo () {
-  return 42;
-}
-
-function bar () {
-  return 10;
-}
-
 /*
   2. Write an `add(..)` function that takes two numbers
     and adds them and returns the result. Call `add(..)`
@@ -18,7 +10,7 @@ function bar () {
     print the result to the console.
  */
 
-function add (x, y) {
+function add(x, y) {
   return x + y;
 }
 
@@ -33,7 +25,7 @@ function add2(fn1, fn2) {
   return add(fn1(), fn2());
 }
 
-add2(foo, bar); // 52
+add2(foo(10), foo(42)); // 52
 
 /*
   4. Replace your two functions from (1) with a single function that
@@ -41,3 +33,8 @@ add2(foo, bar); // 52
   function will return the value when it's called.
  */
 
+function foo(x) {
+  return function (){
+    return x;
+  };
+}
