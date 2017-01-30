@@ -55,4 +55,12 @@ function addn(...arr) {
       },arr[0])();
 }
 
-addn(...[10, 42, 56, 73].map(foo));
+function isOdd(x) { return x % 2 === 1; }
+
+function isEven(x) { return !isOdd(x); }
+
+var arr = [10, 42, 56, 73, 15, 2, 98, 7]
+    .filter(isEven)
+    .map(foo);
+
+addn(...arr);
