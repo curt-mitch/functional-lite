@@ -55,4 +55,4 @@ function addn(...arr) {
       },arr[0])();
 }
 
-addn(foo(10), foo(42), foo(56), foo(73));
+addn(...[10, 42, 56, 73].map(foo));
