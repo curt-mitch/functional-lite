@@ -46,16 +46,13 @@ function foo(x) {
   may/reduce).
  */
 
-function addn(arr) {
-  if (arr.length <= 2) {
-    return add2(foo(arr[0]), foo(arr[1]));
-  }
-  return addn(
-    [function() {
-      return add2(arr[0], arr[1]);
-    }]
-    .concat(arr.slice(2))
-  );
+function addn(...arr) {
+  return arr.slice(1)
+      .reduce(function (prev, cur){
+        return function () {
+          return add2(prev, cur);
+        };
+      },arr[0])();
 }
 
-addn(10, 42, 56, 73);
+addn(foo(10), foo(42), foo(56), foo(73));
